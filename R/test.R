@@ -1,5 +1,8 @@
+# Load required libraries
+library(methods)  # For S4 classes
+
 # Create an empty SFish object
-sfish <- create_empty_sfish()
+sfish <- create_empty_sfish(gridType = "C-square")
 
 # Add a spatial unit (C-square)
 csquare_code <- "1500:467:363:4"
@@ -15,15 +18,12 @@ sfish <- add_spatial_unit(sfish, csquare_code2, wkt_polygon2)
 sfish <- add_data(
   sfish,
   spatial_id = "1500:467:363:4",
-  dimension_values = list(
+  data_values = list(
     year = "2022",
     month = "1",
     country = "DK",
     metier4 = "GNS",
-    metier5 = "DEF"
-  ),
-  data_values = list(
-    geometry = wkt_polygon,
+    metier5 = "DEF",
     effort = 1,
     catch = 1214.225,
     value = 6066.186,
@@ -35,15 +35,12 @@ sfish <- add_data(
 sfish <- add_data(
   sfish,
   spatial_id = "1500:467:364:4",
-  dimension_values = list(
+  data_values = list(
     year = "2022",
     month = "1",
     country = "DK",
     metier4 = "GNS",
-    metier5 = "DEF"
-  ),
-  data_values = list(
-    geometry = wkt_polygon2,
+    metier5 = "DEF",
     effort = 1,
     catch = 0,
     value = 0,
@@ -52,4 +49,4 @@ sfish <- add_data(
 )
 
 # Print the SFish object
-print(sfish)
+sfish  # This will call the show method
